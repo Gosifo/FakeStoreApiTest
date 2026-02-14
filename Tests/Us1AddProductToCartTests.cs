@@ -1,7 +1,6 @@
 ﻿using FakeStoreApiTest.Helper;
 using FakeStoreApiTest.Models;
 using FluentAssertions;
-using Humanizer;
 using Newtonsoft.Json;
 using RestSharp;
 
