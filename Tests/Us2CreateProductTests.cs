@@ -71,6 +71,7 @@ namespace FakeStoreApiTest.Tests
 
 
 
+		// This will fail
 		[Fact(DisplayName = "Products should reject duplicate product names when creating multiple products")]
 		public async Task Should_Reject_Duplicate_Product_Names_When_Creating_Multiple_Products()
 		{
