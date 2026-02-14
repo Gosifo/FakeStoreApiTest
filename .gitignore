@@ -1,0 +1,64 @@
+# ===============================
+# .NET / Visual Studio
+# ===============================
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# ===============================
+# Playwright
+# ===============================
+# Playwright browsers (installed locally)
+.playwright/
+playwright/.cache/
+
+# Playwright test artifacts
+test-results/
+playwright-report/
+trace.zip
+
+# Screenshots / videos (if enabled)
+**/screenshots/
+**/videos/
+
+# ===============================
+# Logs
+# ===============================
+*.log
+
+# ===============================
+# OS generated files
+# ===============================
+.DS_Store
+Thumbs.db
+
+# ===============================
+# Environment / secrets
+# ===============================
+.env
+.env.*
+secrets.json
+appsettings.Development.json
+
+# ===============================
+# NuGet
+# ===============================
+packages/
+*.nupkg
+
+# ===============================
+# Test results
+# ===============================
+TestResults/
+coverage/
