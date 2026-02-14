@@ -17,14 +17,14 @@ namespace FakeStoreApiTest.Bdd.Featuers
     
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Reqnroll", "3.0.0.0")]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class Feature1Feature : object, global::Xunit.IClassFixture<Feature1Feature.FixtureData>, global::Xunit.IAsyncLifetime
+    public partial class AddProductToTheCartFeature : object, global::Xunit.IClassFixture<AddProductToTheCartFeature.FixtureData>, global::Xunit.IAsyncLifetime
     {
         
         private global::Reqnroll.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Bdd/Featuers", "Feature1", @"As an online shopper, I want to view all available products and add the cheapest electronics item to my cart.
+        private static global::Reqnroll.FeatureInfo featureInfo = new global::Reqnroll.FeatureInfo(new global::System.Globalization.CultureInfo("en-US"), "Bdd/Featuers", "Add product to the cart", @"As an online shopper, I want to view all available products and add the cheapest electronics item to my cart.
 
 Req
 Acceptance Criteria:
@@ -37,7 +37,7 @@ Acceptance Criteria:
 #line 1 "FakeStoreTest.feature"
 #line hidden
         
-        public Feature1Feature(Feature1Feature.FixtureData fixtureData, global::Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public AddProductToTheCartFeature(AddProductToTheCartFeature.FixtureData fixtureData, global::Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
         }
@@ -140,7 +140,7 @@ Acceptance Criteria:
         }
         
         [global::Xunit.SkippableTheoryAttribute(DisplayName="Add the cheapest electronics product to the cart")]
-        [global::Xunit.TraitAttribute("FeatureTitle", "Feature1")]
+        [global::Xunit.TraitAttribute("FeatureTitle", "Add product to the cart")]
         [global::Xunit.TraitAttribute("Description", "Add the cheapest electronics product to the cart")]
         [global::Xunit.TraitAttribute("Category", "tag1")]
         [global::Xunit.InlineDataAttribute("men\'s clothing", "2", "1", "0", new string[0])]
@@ -202,12 +202,12 @@ this.ScenarioInitialize(scenarioInfo, ruleInfo);
             
             async global::System.Threading.Tasks.Task global::Xunit.IAsyncLifetime.InitializeAsync()
             {
-                await Feature1Feature.FeatureSetupAsync();
+                await AddProductToTheCartFeature.FeatureSetupAsync();
             }
             
             async global::System.Threading.Tasks.Task global::Xunit.IAsyncLifetime.DisposeAsync()
             {
-                await Feature1Feature.FeatureTearDownAsync();
+                await AddProductToTheCartFeature.FeatureTearDownAsync();
             }
         }
     }
