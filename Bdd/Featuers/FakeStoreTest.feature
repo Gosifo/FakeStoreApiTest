@@ -1,4 +1,4 @@
-﻿Feature: Feature1
+﻿Feature: Add product to the cart
 
 As an online shopper, I want to view all available products and add the cheapest electronics item to my cart.
 
