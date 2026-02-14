@@ -1,36 +1,36 @@
-﻿name: API FakeStoreTest Automation
+﻿# name: API FakeStoreTest Automation
 
-on:
-  push:
-    branches: [ main, master ]
-  pull_request:
-    branches: [ main, master ]
+# on:
+#   push:
+#     branches: [ main, master ]
+#   pull_request:
+#     branches: [ main, master ]
 
-jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
+# jobs:
+#   build-and-test:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v5
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v5
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v5
-        with:
-          dotnet-version: 10.0.x
+#       - name: Setup .NET
+#         uses: actions/setup-dotnet@v5
+#         with:
+#           dotnet-version: 10.0.x
 
-      - name: Restore Dependencies
-        run: dotnet restore
+#       - name: Restore Dependencies
+#         run: dotnet restore
 
-      - name: Build Project
-        run: dotnet build --no-restore --configuration Release
+#       - name: Build Project
+#         run: dotnet build --no-restore --configuration Release
 
-      - name: Run API Tests
-        run: dotnet test --no-build --configuration Release --logger "trx;LogFileName=test-results.trx"
+#       - name: Run API Tests
+#         run: dotnet test --no-build --configuration Release --logger "trx;LogFileName=test-results.trx"
 
-      - name: Upload Test Results
-        if: always()
-        uses: actions/upload-artifact@v5
-        with:
-          name: test-results
-          path: '**/test-results.trx'
+#       - name: Upload Test Results
+#         if: always()
+#         uses: actions/upload-artifact@v5
+#         with:
+#           name: test-results
+#           path: '**/test-results.trx'
