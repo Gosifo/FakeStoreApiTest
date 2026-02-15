@@ -4,13 +4,13 @@ namespace FakeStoreApiTest.Helper;
 
 public class ApiClientHelper
 {
-    private static string BaseUrl => "https://fakestoreapi.com";
+    private readonly string baseUrl = "https://fakestoreapi.com";
 
     private readonly RestClient _client;
 
     public ApiClientHelper()
     {
-        _client = new RestClient(BaseUrl);
+        _client = new RestClient(baseUrl);
     }
 
     public async Task<RestResponse> GetAsync(string endpoint)

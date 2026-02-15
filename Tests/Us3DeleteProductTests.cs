@@ -38,9 +38,9 @@ namespace FakeStoreApiTest.Tests
             var deleteResponse = await _apiClient.DeleteAsync($"/products/{lowestRatedProduct.Id}");
             deleteResponse.StatusCode.Should().Be(HttpStatusCode.OK);
 
-            ////Attempt to retrieve deleted product should get 404 not found -> this fails because nothing will delete on the database.
+            ////Attempt to retrieve deleted product should get 404 not found -> this fails because nothing will delete.
             //var getDeletedResponse = await _apiClient.GetAsync($"/products/{lowestRatedProduct.Id}");
-            //getDeletedResponse.StatusCode.Should().Be(HttpStatusCode.NotFound, "the product should no longer exist after deletion");
+            //getDeletedResponse.StatusCode.Should().Be(HttpStatusCode.NotFound);
         }
     }
 }
