@@ -31,7 +31,7 @@ namespace FakeStoreApiTest.Tests
             // Add the first product and check that a new product is added
             var response1 = await _apiClient.PostAsync("/products", productA);
             response1.StatusCode.Should().Be(HttpStatusCode.Created);
-            var createdProduct1 = JsonConvert.DeserializeObject<Product>(response1.Content ?? string.Empty);
+            var createdProduct1 = JsonConvert.DeserializeObject<Product>(response1.Content!);
             createdProduct1.Should().NotBeNull();
             createdProduct1.Title.Should().Be(title);
             createdProduct1.Price.Should().Be(price);
@@ -44,7 +44,7 @@ namespace FakeStoreApiTest.Tests
             // Add the second product and check that a new product is added
             var response2 = await _apiClient.PostAsync("/products", productB);
             response2.StatusCode.Should().Be(HttpStatusCode.Conflict, "Because duplicate product id should not be allowed");
-            var createdProduct2 = JsonConvert.DeserializeObject<Product>(response2.Content ?? string.Empty);
+            var createdProduct2 = JsonConvert.DeserializeObject<Product>(response2.Content!);
             createdProduct2.Should().NotBeNull();
             createdProduct2.Id.Should().NotBe(newlyCreatedProdId);
         }
@@ -58,7 +58,7 @@ namespace FakeStoreApiTest.Tests
             //Get existing Product title to be used for test 
             var response = await _apiClient.GetAsync("/products");
             response.StatusCode.Should().Be(HttpStatusCode.OK);
-            var products = JsonConvert.DeserializeObject<List<Product>>(response.Content ?? string.Empty);
+            var products = JsonConvert.DeserializeObject<List<Product>>(response.Content!);
             var chooseProduct = products?.FirstOrDefault();
             var productTitle = chooseProduct!.Title;
 
@@ -108,7 +108,7 @@ namespace FakeStoreApiTest.Tests
             response.StatusCode.Should().Be(HttpStatusCode.Created);
 
             // Test 1: Checks the newly added product is immediately visible.
-            var createdProduct = JsonConvert.DeserializeObject<Product>(response.Content ?? string.Empty);
+            var createdProduct = JsonConvert.DeserializeObject<Product>(response.Content!);
             createdProduct.Should().NotBeNull();
             createdProduct.Id.Should().Be(21);
             createdProduct.Title.Should().Be(title);
@@ -121,7 +121,7 @@ namespace FakeStoreApiTest.Tests
             //var getProductResponse = await _apiClient.GetAsync("/products");
             //getProductResponse.StatusCode.Should().Be(HttpStatusCode.OK);
 
-            //var getProducts = JsonConvert.DeserializeObject<List<Product>>(getProductResponse.Content ?? string.Empty);
+            //var getProducts = JsonConvert.DeserializeObject<List<Product>>(getProductResponse.Content!);
             //getProducts.Should().NotBeNull();
             //getProducts.Should().Contain(p => p.Id == createdProduct.Id);
         }

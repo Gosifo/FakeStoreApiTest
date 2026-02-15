@@ -2,6 +2,7 @@
 using FakeStoreApiTest.Models;
 using FluentAssertions;
 using Newtonsoft.Json;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace FakeStoreApiTest.Tests
 {
@@ -22,7 +23,7 @@ namespace FakeStoreApiTest.Tests
             var response = await _apiClient.GetAsync("/products");
             response.StatusCode.Should().Be(HttpStatusCode.OK);
 
-            var products = JsonConvert.DeserializeObject<List<Product>>(response.Content ?? string.Empty);
+            var products = JsonConvert.DeserializeObject<List<Product>>(response.Content!);
             products.Should().NotBeNull();
             products.Should().NotBeEmpty();
 
@@ -38,9 +39,20 @@ namespace FakeStoreApiTest.Tests
             var deleteResponse = await _apiClient.DeleteAsync($"/products/{lowestRatedProduct.Id}");
             deleteResponse.StatusCode.Should().Be(HttpStatusCode.OK);
 
-            ////Attempt to retrieve deleted product should get 404 not found -> this fails because nothing will delete.
-            //var getDeletedResponse = await _apiClient.GetAsync($"/products/{lowestRatedProduct.Id}");
-            //getDeletedResponse.StatusCode.Should().Be(HttpStatusCode.NotFound);
-        }
-    }
+			// Checks the product is deleted
+			var deleteProduct = JsonConvert.DeserializeObject<Product>(deleteResponse.Content!);
+			deleteProduct.Should().NotBeNull();
+			deleteProduct.Id.Should().Be(lowestRatedProduct.Id);
+			deleteProduct.Title.Should().Be(lowestRatedProduct.Title);
+			deleteProduct.Price.Should().Be(lowestRatedProduct.Price);
+			deleteProduct.Description.Should().Be(lowestRatedProduct.Description);
+            deleteProduct.Category.Should().Be(lowestRatedProduct.Category);
+			deleteProduct.Rating!.Rate.Should().Be(lowestRatedProduct.Rating!.Rate);
+			deleteProduct.Rating!.Count.Should().Be(lowestRatedProduct.Rating!.Count);
+
+			////Attempt to retrieve deleted product should get 404 not found -> this fails because nothing will delete.
+			//var getDeletedResponse = await _apiClient.GetAsync($"/products/{lowestRatedProduct.Id}");
+			//getDeletedResponse.StatusCode.Should().Be(HttpStatusCode.NotFound);
+		}
+	}
 }
